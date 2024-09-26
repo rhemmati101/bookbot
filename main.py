@@ -2,9 +2,13 @@ def main():
     book_path: str = "books/frankenstein.txt" 
     
     contents = read_file(book_path)
-    # print(contents)
-    # print(wordcount(contents))
-    print(character_count(contents))
+    num_words = wordcount(contents)
+    char_counts = character_count(contents)
+
+    print(f"--- Report of {book_path} ---")
+    print(f"The document contains {num_words} words")
+    for char in char_counts:
+        print(f"The {char} character was found {char_counts[char]} times")
     
     return 0
 
