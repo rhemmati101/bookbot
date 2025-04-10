@@ -1,4 +1,5 @@
 from stats import *
+import sys
 
 def get_book_text(filepath: str) -> str:
     with open(filepath) as file:
@@ -7,7 +8,11 @@ def get_book_text(filepath: str) -> str:
     
 
 def main():
-    filepath = "./books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    
+    filepath = sys.argv[1]
 
     book_text: str = get_book_text(filepath)
     char_count_list = listify_counts(charcount(book_text))
